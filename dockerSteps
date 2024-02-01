@@ -1,0 +1,16 @@
+ssh ec2-user@publicDNS -i ~/Downloads/YOUR.pem
+chmod 400 ~/Downloads/YOUR.pem
+sudo yum install docker -y
+sudo service docker start
+sudo docker ps
+#shows the image you've created
+docker login
+-- in a new terminal away form the VM
+docker tag LOCAL_IMAGE mohamedabdisalam/NAME_OF_INSTANCE
+docker push mohamedabdisalam/NAME_OF_INSTANCE
+sudo docker ps
+-- back to VM terminal
+sudo docker pull mohamedabdisalam/NAME_OF_INSTANCE
+-- edit inbound roles so port range matches i.e 8000 + 
+sudo docker run -p 5000:5000 mohamedabdisalam/NAME_OF_INSTANCE
+sudo docker run -d -p 5000:5000 mohamedabdisalam/NAME_OF_INSTANCE
